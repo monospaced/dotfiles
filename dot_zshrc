@@ -1,0 +1,18 @@
+# Completion: Homebrew's completions, then initialise
+FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:${FPATH}"
+autoload -Uz compinit
+compinit
+
+# Node version management
+eval "$(fnm env --use-on-cd --shell zsh)"
+
+# Homebrew helpers
+alias bz='brew uninstall --zap'
+
+brewdump() {
+  brew bundle dump --global --force --no-npm --no-vscode &&
+  chezmoi re-add ~/.Brewfile
+}
+
+# Auto-update claude-code
+export CLAUDE_CODE_PACKAGE_MANAGER_AUTO_UPDATE=1

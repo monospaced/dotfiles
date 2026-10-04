@@ -1,0 +1,69 @@
+{
+  "env": {
+    "CLAUDE_CODE_PACKAGE_MANAGER_AUTO_UPDATE": "1"
+  },
+  "permissions": {
+    "defaultMode": "auto",
+    "blockReadsOutsideWorkingDirectories": true,
+    "deny": [
+      "Bash(rsync *)",
+      "Bash(scp *)",
+      "Bash(sftp *)",
+      "Bash(ssh *)",
+      "Bash(sudo *)",
+      "Read(**/.env)",
+      "Read(**/.npmrc)",
+      "Read(**/*.key)",
+      "Read(**/*.p12)",
+      "Read(**/*.pem)",
+      "Read(**/*.pfx)",
+      "Read(**/credentials.json)",
+      "Read(**/id_ed25519*)",
+      "Read(**/id_rsa*)",
+      "Read(**/secrets/**)"
+    ],
+    "ask": [
+      "Bash(dangerouslyDisableSandbox:true)",
+      "Bash(gh *)",
+      "Bash(npx *)",
+      "Bash(pn dlx *)",
+      "Bash(pnpm dlx *)",
+      "Bash(pnpx *)",
+      "Bash(pnx *)",
+      "Edit(**/.claude/settings.json)",
+      "Edit(**/.husky/**)"
+    ]
+  },
+  "sandbox": {
+    "enabled": true,
+    "excludedCommands": [
+      "gh *",
+      "git commit *",
+      "git fetch *",
+      "git pull *",
+      "git push *",
+      "git tag *"
+    ],
+    "filesystem": {
+      "allowRead": [
+        "~/.cache",
+        "~/.local",
+        "~/Library/Caches",
+        "~/Library/pnpm",
+        "~/Library/Preferences/pnpm"
+      ],
+      "allowWrite": [
+        "~/.cache",
+        "~/.local/state",
+        "~/Library/Caches",
+        "~/Library/pnpm",
+        "/private/tmp/pnpm-store-operation-locks-501"
+      ]
+    },
+    "network": {
+      "allowedDomains": ["registry.npmjs.org"],
+      "allowLocalBinding": true
+    }
+  },
+  "theme": "dark"
+}
